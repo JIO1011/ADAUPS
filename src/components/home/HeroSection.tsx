@@ -43,9 +43,7 @@ export default function HeroSection() {
           <AnimatePresence mode="popLayout">
             <motion.img
               key={currentImageIndex}
-              initial={{ opacity: 0, scale: 1.05 }}
-              // 🎨 OPACIDAD de la imagen: ajustar el primer valor (0 = invisible, 1 = totalmente visible)
-              // Valor actual: 0.9 → la imagen se ve casi en su totalidad
+              initial={{ opacity: currentImageIndex === 0 ? 0.7 : 0, scale: 1.05 }}
               animate={{ opacity: 0.7, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}

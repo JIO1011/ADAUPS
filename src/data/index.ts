@@ -312,7 +312,7 @@ export const newsData: NewsItem[] = [
     category: 'Institucional',
     date: '2026-03-10',
     summary: 'Bienvenidos al nuevo portal web de la Asociación de Docentes y Administrativos. Un espacio moderno diseñado para servirte mejor.',
-    imageUrl: '/images/new_web.png',
+    imageUrl: '/images/new_web.webp',
     content: [
       'Nos enorgullece presentar el nuevo portal web de ADAUPS, una plataforma completamente rediseñada para ofrecer a nuestros socios una experiencia ágil, moderna y accesible desde cualquier dispositivo.',
       'Este nuevo espacio digital ha sido concebido para centralizar toda la información de interés: desde nuestros servicios y beneficios exclusivos, hasta los convenios médicos y comerciales vigentes. Ahora es más fácil que nunca mantenerse al tanto de las últimas novedades.',
