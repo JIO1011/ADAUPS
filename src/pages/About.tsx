@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Users, Target, Shield, BookOpen, X } from 'lucide-react';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../lib/motion';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 import PageHeader from '../components/ui/PageHeader';
 
 export default function About() {
@@ -18,11 +17,7 @@ export default function About() {
         />
 
         {/* Historia */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={itemVariants}
+        <AnimateOnScroll
           className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-10 hover:shadow-md transition-shadow duration-300"
         >
           <div className="md:flex">
@@ -44,17 +39,11 @@ export default function About() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
         {/* Misión y Visión */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-          className="grid md:grid-cols-2 gap-6 mb-10"
-        >
-          <motion.div variants={itemVariants} className="bg-white p-10 rounded-3xl shadow-sm border border-slate-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
+          <AnimateOnScroll className="bg-white p-10 rounded-3xl shadow-sm border border-slate-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
             <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
               <Target className="w-8 h-8" />
             </div>
@@ -62,9 +51,9 @@ export default function About() {
             <p className="text-slate-600 leading-relaxed text-lg">
               Representar, defender y promover los derechos e intereses de los docentes, administrativos y personal de servicios de la UPS Sede Quito, fomentando la solidaridad, el bienestar económico y social de sus miembros mediante la gestión transparente de recursos y la creación de beneficios sostenibles.
             </p>
-          </motion.div>
+          </AnimateOnScroll>
 
-          <motion.div variants={itemVariants} className="bg-white p-10 rounded-3xl shadow-sm border border-slate-200 hover:shadow-md hover:border-emerald-200 transition-all duration-300 group">
+          <AnimateOnScroll delay={0.15} className="bg-white p-10 rounded-3xl shadow-sm border border-slate-200 hover:shadow-md hover:border-emerald-200 transition-all duration-300 group">
             <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
               <Shield className="w-8 h-8" />
             </div>
@@ -72,20 +61,14 @@ export default function About() {
             <p className="text-slate-600 leading-relaxed text-lg">
               Ser la asociación líder y referente dentro de la comunidad universitaria, reconocida por su solidez institucional, transparencia en la gestión y por brindar servicios y beneficios de excelencia que mejoren significativamente la calidad de vida de todos nuestros asociados y sus familias.
             </p>
-          </motion.div>
-        </motion.div>
+          </AnimateOnScroll>
+        </div>
 
         {/* Directiva */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-          className="mb-20"
-        >
+        <AnimateOnScroll className="mb-20">
           <div className="text-center mb-8">
-            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-slate-900">Directiva Vigente</motion.h2>
-            <motion.p variants={itemVariants} className="text-base text-slate-600 mt-3">Equipo de trabajo comprometido con el bienestar de los socios.</motion.p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Directiva Vigente</h2>
+            <p className="text-base text-slate-600 mt-3">Equipo de trabajo comprometido con el bienestar de los socios.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -102,9 +85,8 @@ export default function About() {
               { role: 'Representante suplente personal administrativo', name: 'Sr. Ángel Aguaguiña', image: '/images/directive/angel-aguaguiña.webp' },
               { role: 'Representante suplente personal servicio', name: 'Sra. Susana Macías', image: '/images/directive/susana-macias.webp' },
             ].map((member, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
                 className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div 
@@ -118,7 +100,6 @@ export default function About() {
                     loading="lazy"
                     className="w-full h-full object-cover relative z-10"
                     onError={(e) => {
-                      // Fallback si la imagen no existe
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                       if (target.nextElementSibling) {
@@ -126,24 +107,19 @@ export default function About() {
                       }
                     }}
                   />
-                  {/* Placeholder que se muestra si la imagen falla */}
                   <div className="absolute inset-0 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300" style={{ display: 'none' }}>
                     <Users className="w-10 h-10" />
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-1">{member.name}</h3>
                 <p className="text-sm text-blue-600 font-semibold uppercase tracking-wider">{member.role}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
         {/* ¿Quién puede ser socio? */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={itemVariants}
+        <AnimateOnScroll
           className="bg-slate-900 rounded-3xl shadow-xl overflow-hidden mb-20 text-white relative"
         >
           <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
@@ -176,16 +152,13 @@ export default function About() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
       </div>
 
       {/* Modal para ver foto en grande */}
       {selectedPhoto && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
           onClick={() => setSelectedPhoto(null)}
         >
@@ -206,7 +179,7 @@ export default function About() {
               <p className="text-lg font-bold text-slate-900">{selectedPhoto.name}</p>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
     </div>
   );

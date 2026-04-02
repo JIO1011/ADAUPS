@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { servicesData } from '../data';
 import { ArrowRight, Sparkles, FileText } from 'lucide-react';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../lib/motion';
 import { serviceIconMap, defaultServiceIcon } from '../lib/icons';
 import DecorativeBackground from '../components/ui/DecorativeBackground';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 
 export default function Services() {
   return (
@@ -14,12 +13,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
+        <AnimateOnScroll className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-4">
             <Sparkles className="w-4 h-4" />
             <span>Portafolio</span>
@@ -28,21 +22,15 @@ export default function Services() {
           <p className="text-base md:text-lg text-slate-600 leading-relaxed">
             Conoce las opciones de ahorro, préstamos y ayudas económicas diseñadas exclusivamente para el bienestar de nuestros socios.
           </p>
-        </motion.div>
+        </AnimateOnScroll>
 
         {/* Services Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {servicesData.map((service) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {servicesData.map((service, i) => {
             const IconComponent = serviceIconMap[service.icon] || defaultServiceIcon;
 
             return (
-              <motion.div key={service.id} variants={itemVariants}>
+              <AnimateOnScroll key={service.id} delay={i * 0.1}>
                 <Link
                   to={`/servicios/${service.id}`}
                   className="group relative bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-100 flex flex-col h-full block hover:-translate-y-1"
@@ -67,19 +55,13 @@ export default function Services() {
                     <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
-              </motion.div>
+              </AnimateOnScroll>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Certificados Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-14 relative rounded-3xl overflow-hidden shadow-2xl"
-        >
+        <AnimateOnScroll delay={0.2} className="mt-14 relative rounded-3xl overflow-hidden shadow-2xl">
           <div className="absolute inset-0 bg-slate-900" />
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 mix-blend-overlay" />
 
@@ -107,7 +89,7 @@ export default function Services() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
       </div>
     </div>

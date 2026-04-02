@@ -1,15 +1,11 @@
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { AlertTriangle, HomeIcon } from 'lucide-react';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 
 export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center p-4">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center max-w-md"
-      >
+      <AnimateOnScroll className="text-center max-w-md">
         <div className="flex justify-center mb-6">
           <div className="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center">
             <AlertTriangle className="w-12 h-12 text-red-500" />
@@ -27,7 +23,7 @@ export default function NotFound() {
           <HomeIcon className="w-5 h-5" />
           Volver al Inicio
         </Link>
-      </motion.div>
+      </AnimateOnScroll>
     </div>
   );
 }

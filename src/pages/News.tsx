@@ -1,12 +1,10 @@
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { containerVariants, itemVariants } from '../lib/motion';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { newsData } from '../data';
 import DecorativeBackground from '../components/ui/DecorativeBackground';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 
 export default function News() {
-  // Sort all news by date descending
   const sortedNews = [...newsData].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
@@ -29,12 +27,7 @@ export default function News() {
       
       {/* Header Area */}
       <div className="relative pt-24 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl"
-        >
+        <AnimateOnScroll className="max-w-3xl">
           <div className="flex items-center gap-4 mb-6">
             <div className="h-px w-8 bg-blue-600"></div>
             <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">
@@ -51,19 +44,14 @@ export default function News() {
             Explora los últimos comunicados oficiales, coberturas de eventos y 
             novedades relevantes para la comunidad ADAUPS.
           </p>
-        </motion.div>
+        </AnimateOnScroll>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Featured Editorial Article */}
         {featuredNews && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-14 group"
-          >
+          <AnimateOnScroll delay={0.1} className="mb-14 group">
             <Link to={`/noticias/${featuredNews.id}`} className="block cursor-pointer">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
               <div className="lg:col-span-8 order-2 lg:order-1 pr-0 lg:pr-8">
@@ -100,7 +88,7 @@ export default function News() {
               </div>
             </div>
             </Link>
-          </motion.div>
+          </AnimateOnScroll>
         )}
 
         {/* Separator */}
@@ -108,20 +96,11 @@ export default function News() {
           <div className="w-full h-px bg-slate-200 mb-10" />
         )}
 
-        {/* Secondary Articles List (Formal Horizontal Layout) */}
+        {/* Secondary Articles List */}
         {regularNews.length > 0 && (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
-            variants={containerVariants}
-            className="grid grid-cols-1 gap-6"
-          >
-            {regularNews.map((news) => (
-              <motion.article 
-                key={news.id} 
-                variants={itemVariants}
-              >
+          <div className="grid grid-cols-1 gap-6">
+            {regularNews.map((news, i) => (
+              <AnimateOnScroll key={news.id} delay={i * 0.1}>
                 <Link
                   to={`/noticias/${news.id}`}
                   className="group flex flex-col sm:flex-row gap-5 md:gap-6 items-start cursor-pointer border border-transparent hover:border-slate-100 hover:bg-slate-50 p-4 -ml-4 rounded-2xl transition-all duration-300"
@@ -161,9 +140,9 @@ export default function News() {
                   </div>
                 </div>
                 </Link>
-              </motion.article>
+              </AnimateOnScroll>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
     </div>

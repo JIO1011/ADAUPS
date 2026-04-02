@@ -2,8 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { servicesData } from '../data';
 import { ArrowLeft, CheckCircle2, FileText, ExternalLink, HelpCircle, Phone } from 'lucide-react';
 import { serviceIconMap, defaultServiceIcon } from '../lib/icons';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../lib/motion';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 
 export default function ServiceDetail() {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -20,21 +19,16 @@ export default function ServiceDetail() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Back Link */}
-        <motion.div initial="hidden" animate="visible" variants={itemVariants}>
+        <AnimateOnScroll>
           <Link to="/servicios" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Volver a Servicios
           </Link>
-        </motion.div>
+        </AnimateOnScroll>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-        >
+        <AnimateOnScroll>
           {/* Header */}
-          <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-200 mb-8">
+          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-200 mb-8">
           <div className="flex items-center mb-6">
             <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mr-6">
               <IconComponent className="w-8 h-8" />
@@ -60,10 +54,10 @@ export default function ServiceDetail() {
               </a>
             </div>
           )}
-          </motion.div>
+          </div>
 
           {/* Content Grid */}
-          <motion.div variants={itemVariants} className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
 
           {/* Main Content Column */}
           <div className="md:col-span-2 space-y-8">
@@ -125,8 +119,6 @@ export default function ServiceDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-
-            {/* Elegibilidad */}
             <div className="bg-slate-900 rounded-2xl p-6 shadow-sm text-white">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">
                 ¿Quién puede aplicar?
@@ -136,7 +128,6 @@ export default function ServiceDetail() {
               </p>
             </div>
 
-            {/* Cómo solicitar */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-3">
                 Cómo solicitar
@@ -146,7 +137,6 @@ export default function ServiceDetail() {
               </p>
             </div>
 
-            {/* Documentos */}
             {service.documents && service.documents.length > 0 && (
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4">
@@ -170,7 +160,6 @@ export default function ServiceDetail() {
               </div>
             )}
 
-            {/* Contacto */}
             <div className="bg-blue-50 rounded-2xl p-6 shadow-sm border border-blue-100">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-blue-800 mb-3 flex items-center">
                 <Phone className="w-4 h-4 mr-2" />
@@ -182,8 +171,8 @@ export default function ServiceDetail() {
             </div>
 
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </AnimateOnScroll>
 
       </div>
     </div>
