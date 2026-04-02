@@ -115,7 +115,7 @@ export default function Transparency() {
                                 </span>
                                 <span className="text-slate-300">•</span>
                                 <span>
-                                  Publicado: {new Date(doc.date).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase())}
+                                  Publicado: {new Date(doc.date).toLocaleDateString('es-ES', { timeZone: 'UTC', month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase())}
                                 </span>
                               </div>
                             </div>

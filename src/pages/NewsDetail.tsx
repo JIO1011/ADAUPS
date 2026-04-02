@@ -16,6 +16,7 @@ export default function NewsDetail() {
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('es-ES', {
+      timeZone: 'UTC',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -100,18 +101,31 @@ export default function NewsDetail() {
           transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          {news.content.map((paragraph, index) => (
-            <p
-              key={index}
-              className={`text-base lg:text-lg text-slate-700 leading-relaxed ${
-                index === 0 
-                ? 'first-letter:text-5xl first-letter:font-black first-letter:text-blue-600 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none' 
-                : ''
-              }`}
-            >
-              {paragraph}
-            </p>
-          ))}
+          {news.content.map((paragraph, index) => {
+            if (paragraph.startsWith('IMAGE:')) {
+              const imageUrl = paragraph.replace('IMAGE:', '').trim();
+              return (
+                <div key={index} className="my-10 rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50">
+                   <img src={imageUrl} alt={`Contenido ${index}`} className="w-full h-auto object-cover" />
+                </div>
+              );
+            }
+
+            const firstTextIndex = news.content.findIndex(p => !p.startsWith('IMAGE:'));
+            
+            return (
+              <p
+                key={index}
+                className={`text-base lg:text-lg text-slate-700 leading-relaxed ${
+                  index === firstTextIndex 
+                  ? 'first-letter:text-5xl first-letter:font-black first-letter:text-blue-600 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none' 
+                  : ''
+                }`}
+              >
+                {paragraph}
+              </p>
+            );
+          })}
         </motion.div>
 
         {/* Share / Tags / Author block (mocked for aesthetics) */}

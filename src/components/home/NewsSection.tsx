@@ -14,6 +14,7 @@ export default function NewsSection() {
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('es-ES', { 
+      timeZone: 'UTC',
       year: 'numeric', 
       month: 'short', 
       day: 'numeric' 

@@ -317,18 +317,79 @@ export const eventsData: Event[] = [
 /* news  */
 export const newsData: NewsItem[] = [
   {
-    id: 'n1',
+    id: 'news1',
     title: 'Lanzamiento del Nuevo Portal ADAUPS',
     category: 'Institucional',
     date: '2026-03-10',
     summary: 'Bienvenidos al nuevo portal web de la Asociación de Docentes y Administrativos. Un espacio moderno diseñado para servirte mejor.',
     imageUrl: '/images/news/new_web.webp',
+
     content: [
       'Nos enorgullece presentar el nuevo portal web de ADAUPS, una plataforma completamente rediseñada para ofrecer a nuestros socios una experiencia ágil, moderna y accesible desde cualquier dispositivo.',
       'Este nuevo espacio digital ha sido concebido para centralizar toda la información de interés: desde nuestros servicios y beneficios exclusivos, hasta los convenios médicos y comerciales vigentes. Ahora es más fácil que nunca mantenerse al tanto de las últimas novedades.',
       'Entre las principales mejoras, destacamos una navegación más intuitiva, un diseño enfocado en la usabilidad y nuevas secciones orientadas a la transparencia institucional.',
       'Invitamos a toda la comunidad de docentes y administrativos a explorar el portal, aprovechar los recursos disponibles y compartir sus comentarios para seguir mejorando de forma continua.'
     ]
+    
   },
+  
+  {
+    id: 'news2',
+    title: 'Resultados Oficiales de la Consulta Popular: Asamblea General ADAUPS-Q 2026',
+    category: 'Eventos',
+    date: '2026-04-01',
+    summary: 'Presentamos el informe detallado de las 11 resoluciones clave aprobadas por los socios de ADAUPS-Q, reflejando un firme respaldo a la transparencia y la regularización institucional.',
+    imageUrl: '/images/news/new2.webp', // Imagen de cabecera generada anteriormente
+    
+    content: [
+      'El día de ayer concluyó con éxito el proceso de consulta democrática de la ADAUPS-Q. Con una participación que alcanzó picos de más de 540 socios en temas críticos, presentamos los resultados oficiales que marcarán la gestión administrativa de este periodo.',
+      
+      // PREGUNTA 1
+      'Pregunta 1: Aprobación del Presupuesto de la ADAUPS-Q para el año 2026, en los términos y montos presentados ante la Asamblea General. (Aprobado con el 95% de los votos)',
+      'IMAGE: /images/news/consult1.webp',
+      
+      // PREGUNTA 2
+      'Pregunta 2: Reforma al Artículo 21 del Reglamento referente al Fondo de Reserva: Elección entre Tasa Referencial Variable o Tasa Fija Anual. (Resultado: 59% a favor de la Tasa Fija Anual)',
+      'IMAGE: /images/news/consult2.webp',
+      
+      // PREGUNTA 3
+      'Pregunta 3: Autorización para la realización de un estudio técnico y el diseño de un proyecto integral con el objetivo de regularizar procesos institucionales. (Aprobado con el 75%)',
+      'IMAGE: /images/news/consult3.webp',
+      
+      // PREGUNTA 4
+      'Pregunta 4: Ratificación sobre la identificación de un riesgo operativo alto en el trabajo contable y financiero de la asociación debido a factores estructurales. (Confirmado con el 88%)',
+      'IMAGE: /images/news/consult4.webp',
+
+      // PREGUNTA 5
+      'Pregunta 5: Resolución sobre la contabilización de un aporte obligatorio del 1% sobre el sueldo de cada socio para el registro y gestión de beneficios. (Aprobado con el 69%)',
+      'IMAGE: /images/news/consult5.webp',
+
+      // PREGUNTA 6
+      'Pregunta 6: Reforma al Artículo 21 del Reglamento de Crédito para establecer la creación de un Fondo de Desgravamen institucional. (Aprobado con el 84%)',
+      'IMAGE: /images/news/consult6.webp',
+
+      // PREGUNTA 7
+      'Pregunta 7: Aprobación de la propuesta de pago de la deuda mantenida con la Universidad Politécnica Salesiana por un monto de $260,000. (Aprobado con el 80%)',
+      'IMAGE: /images/news/consult7.webp',
+
+      // PREGUNTA 8
+      'Pregunta 8: Resolución sobre la auditoría externa a los estados financieros realizada y presentada por la firma CONRISK S.A. (Aprobado con el 80%)',
+      'IMAGE: /images/news/consult8.webp',
+
+      // PREGUNTA 9
+      'Pregunta 9: Aprobación del informe económico al 31 de diciembre de 2025 presentado por la Sra. Lorena Guerrero. (Aprobado con el 97%)',
+      'IMAGE: /images/news/consult9.webp',
+
+      // PREGUNTA 10
+      'Pregunta 10: Aprobación del informe de actividades 2025-2026 presentado por el Sr. Darwin Reyes Solís, reconociendo las acciones ejecutadas. (Aprobado con el 96%)',
+      'IMAGE: /images/news/consult10.webp',
+
+      // PREGUNTA 11
+      'Pregunta 11: Aprobación del acta de la Asamblea General de Socios celebrada el 11 de junio de 2025, ratificando su contenido respecto a las deliberaciones. (Aprobado con el 97%)',
+      'IMAGE: /images/news/consult11.webp',
+      
+      'Los resultados reflejan un sólido respaldo a las propuestas de la directiva, especialmente en temas críticos como el presupuesto y la regularización de deudas institucionales. Estas decisiones nos permiten avanzar con orden y seguridad jurídica.',
+      'Agradecemos profundamente a todos los socios por su activa participación en este proceso democrático. Seguiremos construyendo juntos el futuro de ADAUPS-Q.'    ]
+}
 
 ];
