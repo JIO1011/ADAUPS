@@ -45,6 +45,8 @@ export default function HeroSection() {
               src={backgroundImages[currentImageIndex]}
               alt="ADAUPS Background"
               className="absolute inset-0 w-full h-full object-cover object-center"
+              fetchPriority={currentImageIndex === 0 ? 'high' : 'auto'}
+              loading={currentImageIndex === 0 ? 'eager' : 'lazy'}
             />
           </AnimatePresence>
 

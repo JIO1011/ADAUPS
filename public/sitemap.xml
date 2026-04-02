@@ -3,37 +3,32 @@
   <!-- Rutas Principales -->
   <url>
     <loc>https://adaups.org/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://adaups.org/sobre-adaups</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adaups.org/servicios</loc>
-    <lastmod>2026-03-14</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://adaups.org/beneficios</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://adaups.org/transparencia</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adaups.org/noticias</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://adaups.org/contacto</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -45,17 +40,15 @@
   <url><loc>https://adaups.org/servicios/ahorro-programado</loc><priority>0.7</priority></url>
   <url><loc>https://adaups.org/servicios/ahorro-voluntario</loc><priority>0.7</priority></url>
 
-  <!-- Detalles de Beneficios -->
-  <url><loc>https://adaups.org/beneficios/seguro-vehicular</loc><priority>0.7</priority></url>
-  <url><loc>https://adaups.org/beneficios/farmacias-gpf</loc><priority>0.7</priority></url>
-  <url><loc>https://adaups.org/beneficios/farmacias-difare</loc><priority>0.7</priority></url>
-  <url><loc>https://adaups.org/beneficios/tecnomega</loc><priority>0.7</priority></url>
-  <url><loc>https://adaups.org/beneficios/dilipa</loc><priority>0.7</priority></url>
-
   <!-- Detalles de Noticias -->
   <url>
-    <loc>https://adaups.org/noticias/n1</loc>
+    <loc>https://adaups.org/noticias/news1</loc>
     <lastmod>2026-03-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://adaups.org/noticias/news2</loc>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
