@@ -1,17 +1,15 @@
 import { Clock, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { containerVariants, itemVariants } from '../../lib/motion';
+import AnimateOnScroll from '../ui/AnimateOnScroll';
 import SectionHeading from '../ui/SectionHeading';
 import { eventsData } from '../../data';
 import type { Event } from '../../types/types';
 
 const CARDS_PER_PAGE = 3;
 
-function EventCard({ event }: { event: Event }) {
+function EventCard({ event, delay = 0 }: { event: Event; delay?: number }) {
   return (
-    <motion.div
-      variants={itemVariants}
+    <AnimateOnScroll delay={delay}
       className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 hover:shadow-md transition-shadow h-full"
     >
       <div className="flex items-center justify-between mb-4">
@@ -28,7 +26,6 @@ function EventCard({ event }: { event: Event }) {
       <h3 className="text-lg font-bold text-slate-900 mb-1.5 truncate">{event.title}</h3>
       <p className="text-slate-600 text-sm mb-3 line-clamp-2">{event.description}</p>
       
-      {/* Ubicación y hora en la misma línea para ahorrar espacio */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500 mt-auto pt-2 border-t border-slate-100">
         <div className="flex items-center">
           <Clock className="w-3.5 h-3.5 mr-1.5 text-blue-500" /> 
@@ -39,7 +36,7 @@ function EventCard({ event }: { event: Event }) {
           <span className="truncate">{event.location}</span>
         </div>
       </div>
-    </motion.div>
+    </AnimateOnScroll>
   );
 }
 
@@ -72,20 +69,11 @@ function CarouselView() {
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={page}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {visible.map((event) => (
-            <EventCard key={event.title} event={event} />
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {visible.map((event, i) => (
+          <EventCard key={event.title} event={event} delay={i * 0.1} />
+        ))}
+      </div>
 
       <div className="flex justify-center gap-2 mt-6">
         {Array.from({ length: totalPages }).map((_, i) => (
@@ -116,19 +104,13 @@ function GridView() {
   const cardWrapper = count === 1 ? 'w-full max-w-sm' : '';
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.1 }}
-      variants={containerVariants}
-      className={gridClass}
-    >
-      {eventsData.map((event) => (
+    <div className={gridClass}>
+      {eventsData.map((event, i) => (
         <div key={event.title} className={cardWrapper}>
-          <EventCard event={event} />
+          <EventCard event={event} delay={i * 0.15} />
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
 
@@ -138,9 +120,6 @@ export default function EventsSection() {
   return (
     <section className="pt-32 md:pt-36 pb-10 relative overflow-hidden bg-slate-50">
       
-      {/* 🌟 Fondo de estrellas grises 
-          PUNTOS/ESTRELLAS MÁS GRANDES: cambia la propiedad backgroundSize de '48px 48px' a un valor mayor, ej: '64px 64px'
-      */}
       <div className="absolute inset-0 z-0 opacity-25 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(circle, #94a3b8 2px, transparent 0)', backgroundSize: '48px 48px' }} 
       />

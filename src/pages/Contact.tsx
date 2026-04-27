@@ -1,25 +1,19 @@
 import { MapPin, Phone, Mail, Clock, Building, ExternalLink } from 'lucide-react';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../lib/motion';
 import PageHeader from '../components/ui/PageHeader';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 
 export default function Contact() {
   return (
     <div className="bg-slate-50 min-h-screen py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
         <PageHeader
           title="Contacto y Soporte"
           subtitle="Estamos aquí para ayudarte. Encuentra la información de contacto de nuestras oficinas en los diferentes campus."
         />
 
-        {/* Información General - Full Width Card */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={itemVariants}
+        {/* Información General */}
+        <AnimateOnScroll
           className="bg-slate-900 rounded-3xl shadow-xl overflow-hidden mb-10 text-white relative"
         >
           <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl" />
@@ -32,7 +26,6 @@ export default function Contact() {
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">
-              {/* Correo */}
               <a
                 href="mailto:adaups@ups.edu.ec"
                 className="flex items-center gap-4 bg-white/5 hover:bg-white/10 rounded-2xl p-5 transition-colors group"
@@ -47,7 +40,6 @@ export default function Contact() {
                 <ExternalLink className="w-4 h-4 text-slate-500 ml-auto" />
               </a>
 
-              {/* Horario */}
               <div className="flex items-center gap-4 bg-white/5 rounded-2xl p-5">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
                   <Clock className="w-6 h-6 text-blue-400" />
@@ -61,20 +53,15 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
         {/* Campus Locations */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-        >
-          <motion.h2 variants={itemVariants} className="text-2xl font-bold text-slate-900 mb-6 text-center">Nuestras Oficinas</motion.h2>
+        <AnimateOnScroll>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Nuestras Oficinas</h2>
           <div className="grid md:grid-cols-2 gap-6">
 
             {/* Campus El Girón */}
-            <motion.div variants={itemVariants} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden group hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden group hover:shadow-xl hover:border-blue-200 transition-all duration-300">
               <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-50 rounded-full opacity-50 group-hover:scale-[2] transition-transform duration-700 ease-out" />
               <div className="relative z-10">
                 <div className="flex items-center mb-5">
@@ -95,10 +82,10 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Campus Sur */}
-            <motion.div variants={itemVariants} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden group hover:shadow-xl hover:border-emerald-200 transition-all duration-300">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden group hover:shadow-xl hover:border-emerald-200 transition-all duration-300">
               <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-emerald-50 rounded-full opacity-50 group-hover:scale-[2] transition-transform duration-700 ease-out" />
               <div className="relative z-10">
                 <div className="flex items-center mb-5">
@@ -119,10 +106,10 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
       </div>
     </div>

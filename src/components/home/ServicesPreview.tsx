@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CreditCard, FileText, HeartHandshake, ShieldCheck } from 'lucide-react';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../../lib/motion';
+import AnimateOnScroll from '../ui/AnimateOnScroll';
 import SectionHeading from '../ui/SectionHeading';
 
 const services = [
@@ -38,7 +37,6 @@ const services = [
 export default function ServicesPreview() {
   return (
     <section className="py-14 bg-slate-50 relative overflow-hidden border-y border-slate-200">
-      {/* Decorative background elements */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-60" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-50/50 rounded-full mix-blend-multiply filter blur-3xl opacity-60" />
@@ -50,14 +48,8 @@ export default function ServicesPreview() {
           subtitle="Soluciones financieras y de apoyo diseñadas específicamente para las necesidades de nuestra comunidad docente y administrativa."
         />
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {services.map((service) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service, i) => {
             const cardClass =
               'group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1';
             const inner = (
@@ -75,7 +67,7 @@ export default function ServicesPreview() {
             );
 
             return (
-              <motion.div key={service.title} variants={itemVariants}>
+              <AnimateOnScroll key={service.title} delay={i * 0.1}>
                 {service.external ? (
                   <a href={service.href} target="_blank" rel="noopener noreferrer" className={cardClass}>
                     {inner}
@@ -85,10 +77,10 @@ export default function ServicesPreview() {
                     {inner}
                   </Link>
                 )}
-              </motion.div>
+              </AnimateOnScroll>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

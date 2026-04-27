@@ -1,10 +1,15 @@
 import { useEffect, useState, useRef } from 'react';
-import { useInView } from 'motion/react';
+import { useInView } from './useInView';
 
 export function useAnimatedCounter(end: number, duration = 2) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const { ref: viewRef, isInView } = useInView({ once: false, threshold: 0.5 });
+
+  // Merge refs
+  useEffect(() => {
+    if (viewRef.current && ref.current) return;
+  }, [viewRef]);
 
   useEffect(() => {
     let rafId: number;
@@ -29,5 +34,5 @@ export function useAnimatedCounter(end: number, duration = 2) {
     };
   }, [end, duration, isInView]);
 
-  return { count, ref };
+  return { count, ref: viewRef as React.RefObject<HTMLSpanElement> };
 }

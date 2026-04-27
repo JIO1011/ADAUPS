@@ -8,3 +8,82 @@
     100% { transform: translateX(-50%); }
   }
 }
+
+/* === Scroll-triggered animations === */
+.animate-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+              transform 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
+.animate-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for children */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.25s; }
+.stagger-4 { transition-delay: 0.35s; }
+.stagger-5 { transition-delay: 0.45s; }
+
+/* Scale-in variant */
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+              transform 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
+.animate-scale-in.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Fade-only variant */
+.animate-fade {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.animate-fade.is-visible {
+  opacity: 1;
+}
+
+/* Hero carousel crossfade */
+.hero-image {
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.hero-image.is-active {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+/* Events carousel slide */
+.carousel-slide {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+}
+
+.carousel-slide.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .animate-scale-in,
+  .animate-fade,
+  .hero-image,
+  .carousel-slide {
+    transition-duration: 0.01s !important;
+    transition-delay: 0s !important;
+  }
+}

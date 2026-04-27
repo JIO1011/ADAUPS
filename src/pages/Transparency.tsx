@@ -1,12 +1,9 @@
 import { transparencyData } from '../data';
 import { FileText, Download, Filter, Search, Calendar } from 'lucide-react';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../lib/motion';
 import { useFilteredData } from '../hooks/useFilteredData';
 import PageHeader from '../components/ui/PageHeader';
+import AnimateOnScroll from '../components/ui/AnimateOnScroll';
 import type { TransparencyDocument } from '../types/types';
-
-
 
 export default function Transparency() {
   const {
@@ -22,7 +19,6 @@ export default function Transparency() {
     categoryField: 'category',
   });
 
-  // Group by year
   const groupedData = filteredData.reduce((acc, doc) => {
     const year = new Date(doc.date).getFullYear();
     if (!acc[year]) acc[year] = [];
@@ -36,18 +32,13 @@ export default function Transparency() {
     <div className="bg-slate-50 min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
         <PageHeader
           title="Transparencia"
           subtitle="Accede a los informes financieros, de gestión y resultados de asambleas de ADAUPS."
         />
 
         {/* Filters and Search */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={itemVariants}
+        <AnimateOnScroll
           className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row gap-4 justify-between items-center"
         >
           <div className="relative w-full md:w-2/3">
@@ -77,19 +68,13 @@ export default function Transparency() {
               </select>
             </div>
           </div>
-        </motion.div>
+        </AnimateOnScroll>
 
         {/* Documents List */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          variants={containerVariants}
-          className="space-y-8"
-        >
+        <div className="space-y-8">
           {sortedYears.length > 0 ? (
-            sortedYears.map(year => (
-              <motion.div key={year} variants={itemVariants}>
+            sortedYears.map((year, yi) => (
+              <AnimateOnScroll key={year} delay={yi * 0.1}>
                 <h2 className="text-xl font-bold text-blue-950 mb-4 flex items-center">
                   <Calendar className="w-6 h-6 mr-3 text-blue-800" />
                   Gestión {year}
@@ -97,8 +82,7 @@ export default function Transparency() {
                 <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                   <ul className="divide-y divide-slate-100">
                     {groupedData[year].map((doc) => (
-                      <motion.li
-                        variants={itemVariants}
+                      <li
                         key={doc.id}
                         className="hover:bg-slate-50 transition-colors group"
                       >
@@ -133,22 +117,22 @@ export default function Transparency() {
                             </a>
                           </div>
                         </div>
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </AnimateOnScroll>
             ))
           ) : (
-            <motion.div variants={itemVariants} className="bg-white rounded-3xl shadow-sm border border-slate-200 px-6 py-10 text-center">
+            <AnimateOnScroll className="bg-white rounded-3xl shadow-sm border border-slate-200 px-6 py-10 text-center">
               <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Search className="h-10 w-10 text-slate-400" />
               </div>
               <p className="text-lg font-medium text-slate-900">No se encontraron documentos</p>
               <p className="text-slate-500 mt-1">Intenta con otros términos de búsqueda o categoría.</p>
-            </motion.div>
+            </AnimateOnScroll>
           )}
-        </motion.div>
+        </div>
 
       </div>
     </div>
